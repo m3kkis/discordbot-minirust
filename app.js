@@ -29,12 +29,26 @@ mongoose.connect(process.env.DB_HOST,{
 //Connect bot
 client.once('ready', () => {
     //Set bot status
-    client.user.setActivity('your private data', { type: "WATCHING", url:"https://github.com/m3kkis/discordbot-minirust" });
+    client.user.setActivity('you wandering.', { type: "WATCHING", url:"https://github.com/m3kkis/discordbot-minirust" });
     console.log('[APP] MiniRust is online!');
 });
 
 //Wait for message
 client.on('message', message => {
+
+    /**
+     * COLORS USED:
+     * 
+     * GREEN:       #78de87
+     * ORANGE:      #ffd900
+     * RED:         #ff4f4f
+     * BLUE:        #03b6fc
+     * PURPLE:      #ae00ff
+     * PINK:        #ff69af
+     * DARKBLUE:    #031cfc
+     * POLICEBLUE:  #3849ff
+     * TOXICGREEN:  #84ff00
+     */
 
     if(!message.content.startsWith(prefix) || message.author.bot) return;
 

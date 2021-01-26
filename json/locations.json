@@ -1,0 +1,74 @@
+[
+    {
+        "id" : "beach",
+        "name" : "Beach",
+        "emoji" : ":beach:",
+        "description" : "*Starting zone, not much resource to gather here.*",
+        "resource" : "none",
+        "from" : ["desert","mountain"]
+    },
+    {
+        "id" : "cave",
+        "name" : "Cave",
+        "emoji" : ":bat:",
+        "description" : "*Zone rich in metal ore.*",
+        "resource" : "ore_metal",
+        "from" : ["mountain","snow"]
+    },
+    {
+        "id" : "desert",
+        "name" : "Desert Biome",
+        "emoji" : ":desert:",
+        "description" : "*Zone rich in sulfur ore.*",
+        "resource" : "ore_sulfur",
+        "from" : ["beach","forest","gas"]
+    },
+    {
+        "id" : "forest",
+        "name" : "Forest Biome",
+        "emoji" : ":camping:",
+        "description" : "*Zone rich in wood.*",
+        "resource" : "wood",
+        "from" : ["desert","snow"]
+    },
+    {
+        "id" : "gas_station",
+        "name" : "Gas Station",
+        "emoji" : ":convenience_store:",
+        "description" : "*Has a recycler and some loot.*",
+        "resource" : "none",
+        "from" : ["desert"]
+    },
+    {
+        "id" : "mountain",
+        "name" : "Mountain Biome",
+        "emoji" : ":mountain_snow:",
+        "description" : "*Zone rich in stone.*",
+        "resource" : "stone",
+        "from" : ["beach","cave","satellite_dish"]
+    },
+    {
+        "id" : "power_plant",
+        "name" : "Power Plant",
+        "emoji" : ":zap:",
+        "description" : "*Requires a _BLUE_ card to access higher tier loot room.*",
+        "resource" : "none",
+        "from" : ["snow"]
+    },
+    {
+        "id" : "satellite_dish",
+        "name" : "Satellite Dish",
+        "emoji" : ":telescope:",
+        "description" : "*Requires a _GREEN_ card to access higher tier loot room.*",
+        "resource" : "none",
+        "from" : ["mountain"]
+    },
+    {
+        "id" : "snow",
+        "name" : "Snow Biome",
+        "emoji" : ":snowflake:",
+        "description" : "*Cold, not much resources to gather here.*",
+        "resource" : "none",
+        "from" : ["cave","forest","power_plant"]
+    }
+]
