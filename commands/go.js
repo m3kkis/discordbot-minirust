@@ -19,13 +19,21 @@ module.exports = {
         {
             if( location[0].from.includes(_Player.location))
             {
-                console.log("[GO] Can travel");
+                message.delete();
+
+                console.log("[GO] is traveling to " + args[0]);
 
                 _Player.location = args[0];
                 _Player.save();
 
+                /*
                 embedded.setColor('#78de87')
                     .setDescription(`You've traveled to the **${location[0].emoji} ${location[0].name}**`);
+                */
+
+                embedded.setColor('#78de87')
+                        .setDescription(`You've successfully traveled to the location.`)
+                        .setFooter(`___\nType "${process.env.BOT_PREFIX}loc me" to know where you are.`);
 
                 return message.channel.send(embedded);
             }

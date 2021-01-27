@@ -20,14 +20,19 @@ module.exports = {
 
                     if(_Players.length >= 2)
                     {
+                        console.log("[BASE] Maximum locaiton bases reached.");
+
                         embedded.setColor('#ff4f4f')
                                 .setDescription(`Can't build here. Max 2 bases per location.`)
                         return message.channel.send(embedded);
                     }
                     else
                     {
+                        console.log("[BASE] Building a base.");
+
                         var baseName = "B1";
-                        if(_Players[0].base.id == "B1"){
+
+                        if(_Players[0] != undefined && _Players[0].base.id == "B1"){
                             baseName = "B2";
                         };
                          
@@ -48,6 +53,8 @@ module.exports = {
             }
             else
             {
+                console.log("[BASE] Already has a base.");
+
                 embedded.setColor('#ff4f4f')
                         .setDescription(`You already have a base.`)
                 return message.channel.send(embedded);
@@ -73,6 +80,8 @@ module.exports = {
             }
             else
             {
+                console.log("[BASE] Doesnt have a base.");
+
                 embedded.setColor('#ff4f4f')
                         .setDescription(`You don't have a base.`)
                         .setFooter(`___\nType "${process.env.BOT_PREFIX}base build" to build a base at the current location.`);
