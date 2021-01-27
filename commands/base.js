@@ -14,24 +14,23 @@ module.exports = {
 
         if(args[0] != undefined && args[0].toLowerCase() == "build")
         {
-            
-            Players.find({"base.location" : _Player.location}).then( _Players => {
+            if(_Player.base.id == undefined)
+            {
+                Players.find({"base.location" : _Player.location}).then( _Players => {
 
-                if(_Players.length >= 2)
-                {
-                    embedded.setColor('#ff4f4f')
-                            .setDescription(`Can't build here. Max 2 bases per location.`)
-                    return message.channel.send(embedded);
-                }
-                else
-                {
-                    var baseName = "B1";
-                    if(_Players[0].base.id == "B1"){
-                        baseName = "B2";
-                    };
-                     
-                    if(_Player.base.id == undefined)
+                    if(_Players.length >= 2)
                     {
+                        embedded.setColor('#ff4f4f')
+                                .setDescription(`Can't build here. Max 2 bases per location.`)
+                        return message.channel.send(embedded);
+                    }
+                    else
+                    {
+                        var baseName = "B1";
+                        if(_Players[0].base.id == "B1"){
+                            baseName = "B2";
+                        };
+                         
                         _Player.base.id = baseName;
                         _Player.base.location = _Player.location;
                         _Player.base.type = "twig";
@@ -44,15 +43,15 @@ module.exports = {
         
                         return message.channel.send(embedded);
                     }
-                    else
-                    {
-                        embedded.setColor('#ff4f4f')
-                                .setDescription(`You already have a base.`)
-                        return message.channel.send(embedded);
-                    }
-                }
-
-            });
+    
+                });
+            }
+            else
+            {
+                embedded.setColor('#ff4f4f')
+                        .setDescription(`You already have a base.`)
+                return message.channel.send(embedded);
+            }
         }
         else
         {
