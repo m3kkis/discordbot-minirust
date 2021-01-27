@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const jsonLocation = require('../json/locations.json')
+const Utils = require("../lib/utils");
 const Players = require('../models/player'); 
 
 module.exports = {
@@ -14,51 +15,60 @@ module.exports = {
 
         if(args[0] != undefined && args[0].toLowerCase() == "build")
         {
-            if(_Player.base.id == undefined)
+
+            let idx = jsonLocation.findIndex(x => x.id === _Player.location);
+
+            if(jsonLocation[idx].canBuild == true)
             {
-                Players.find({"base.location" : _Player.location}).then( _Players => {
-
-                    if(_Players.length >= 2)
-                    {
-                        console.log("[BASE] Maximum locaiton bases reached.");
-
-                        embedded.setColor('#ff4f4f')
-                                .setDescription(`Can't build here. Max 2 bases per location.`)
-                        return message.channel.send(embedded);
-                    }
-                    else
-                    {
-                        console.log("[BASE] Building a base.");
-
-                        var baseName = "B1";
-
-                        if(_Players[0] != undefined && _Players[0].base.id == "B1"){
-                            baseName = "B2";
-                        };
-                         
-                        _Player.base.id = baseName;
-                        _Player.base.location = _Player.location;
-                        _Player.base.type = "twig";
-                        _Player.base.health_current = 10;
-                        _Player.base.health = 10;
-                        _Player.save();
-        
-                        embedded.setColor('#78de87')
-                                .setDescription(`Successfully built a base.`)
-        
-                        return message.channel.send(embedded);
-                    }
+                if(_Player.base.id == undefined)
+                {
+                    Players.find({"base.location" : _Player.location}).then( _Players => {
     
-                });
+                        if(_Players.length >= 2)
+                        {
+                            console.log("[BASE] Maximum location bases reached.");
+    
+                            embedded.setColor('#ff4f4f')
+                                    .setDescription(`Can't build here. Max 2 bases per location.`)
+                            return message.channel.send(embedded);
+                        }
+                        else
+                        {
+                            console.log("[BASE] Building a base.");
+    
+                            _Player.base.id = Utils.generateID(4);
+                            _Player.base.location = _Player.location;
+                            _Player.base.type = "twig";
+                            _Player.base.health_current = 10;
+                            _Player.base.health = 10;
+                            _Player.save();
+            
+                            embedded.setColor('#78de87')
+                                    .setDescription(`Successfully built a base.`)
+            
+                            return message.channel.send(embedded);
+                        }
+        
+                    });
+                }
+                else
+                {
+                    console.log("[BASE] Already has a base.");
+    
+                    embedded.setColor('#ff4f4f')
+                            .setDescription(`You already have a base.`)
+                    return message.channel.send(embedded);
+                }
             }
             else
             {
-                console.log("[BASE] Already has a base.");
-
+                console.log("[BASE] Cannot build base at this location.");
+    
                 embedded.setColor('#ff4f4f')
-                        .setDescription(`You already have a base.`)
+                        .setDescription(`Cannot build base at this location.`)
                 return message.channel.send(embedded);
             }
+
         }
         else
         {

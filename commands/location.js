@@ -28,7 +28,16 @@ module.exports = {
         else if(args[0] != undefined && args[0].toLowerCase() == "me")
         {
             let idx = jsonLocation.findIndex(x => x.id === _Player.location);
-            embedded.setDescription(`You are currently in the **${jsonLocation[idx].emoji} ${_Player.location}**`)
+
+            if(_Player.location == "base")
+            {
+                embedded.setDescription(`You are currently in your **:house: ${_Player.location}**`)
+            }
+            else
+            {
+                embedded.setDescription(`You are currently in the **${jsonLocation[idx].emoji} ${_Player.location}**`)
+            }
+
             return message.author.send(embedded);
         }
         else

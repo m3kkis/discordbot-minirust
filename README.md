@@ -51,7 +51,7 @@ Make sure you add the id of a channel for the bot in the .env file.
 # Tutorial
 With the new update coming to this bot, lots of things have changed. Heres a quick tutorial on how to play this discord game.
 
-##### Settling down
+### Settling down
 First thing to do is to find a location that suits you. You can check the map using `!map` and then you can travel using the command `!go <location>`. The tiles must be touching each other to be able to travel to the location. If
 
 

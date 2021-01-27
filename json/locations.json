@@ -4,38 +4,43 @@
         "name" : "Beach",
         "emoji" : ":beach:",
         "description" : "*Starting zone, not much resource to gather here.*",
+        "canBuild":true,
         "resource" : "none",
-        "from" : ["desert","mountain"]
+        "from" : ["desert","mountain","base"]
     },
     {
         "id" : "cave",
         "name" : "Cave",
         "emoji" : ":bat:",
         "description" : "*Zone rich in metal ore.*",
+        "canBuild":true,
         "resource" : "ore_metal",
-        "from" : ["mountain","snow"]
+        "from" : ["mountain","snow","base"]
     },
     {
         "id" : "desert",
         "name" : "Desert Biome",
         "emoji" : ":desert:",
         "description" : "*Zone rich in sulfur ore.*",
+        "canBuild":true,
         "resource" : "ore_sulfur",
-        "from" : ["beach","forest","gas_station"]
+        "from" : ["beach","forest","gas_station","base"]
     },
     {
         "id" : "forest",
         "name" : "Forest Biome",
         "emoji" : ":camping:",
         "description" : "*Zone rich in wood.*",
+        "canBuild":true,
         "resource" : "wood",
-        "from" : ["desert","snow"]
+        "from" : ["desert","snow","base"]
     },
     {
         "id" : "gas_station",
         "name" : "Gas Station",
         "emoji" : ":convenience_store:",
         "description" : "*Has a recycler and some loot.*",
+        "canBuild":false,
         "resource" : "none",
         "from" : ["desert"]
     },
@@ -44,14 +49,16 @@
         "name" : "Mountain Biome",
         "emoji" : ":mountain_snow:",
         "description" : "*Zone rich in stone.*",
+        "canBuild":true,
         "resource" : "stone",
-        "from" : ["beach","cave","satellite_dish"]
+        "from" : ["beach","cave","satellite_dish","base"]
     },
     {
         "id" : "power_plant",
         "name" : "Power Plant",
         "emoji" : ":zap:",
         "description" : "*Requires a _BLUE_ card to access higher tier loot room.*",
+        "canBuild":false,
         "resource" : "none",
         "from" : ["snow"]
     },
@@ -60,6 +67,7 @@
         "name" : "Satellite Dish",
         "emoji" : ":telescope:",
         "description" : "*Requires a _GREEN_ card to access higher tier loot room.*",
+        "canBuild":false,
         "resource" : "none",
         "from" : ["mountain"]
     },
@@ -68,7 +76,8 @@
         "name" : "Snow Biome",
         "emoji" : ":snowflake:",
         "description" : "*Cold, not much resources to gather here.*",
+        "canBuild":true,
         "resource" : "none",
-        "from" : ["cave","forest","power_plant"]
+        "from" : ["cave","forest","power_plant","base"]
     }
 ]
