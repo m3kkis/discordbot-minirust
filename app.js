@@ -84,7 +84,7 @@ client.on('message', message => {
         {
             console.log("[APP] Player found.");
 
-            command.execute(client, message, args);
+            command.execute(client, message, args, _Player);
         }
         else
         {

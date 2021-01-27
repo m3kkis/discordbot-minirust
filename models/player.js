@@ -6,8 +6,11 @@ const playerSchema = new Schema(
     dsid: { type: String },
     tag: { type: String },
     username: { type: String },
-    health : { type: Number, default : 100},
-    energy : { type: Number, default : 10},
+    condition: {
+        status: { type: String, default : "active"},
+        health : { type: Number, default : 100},
+        energy : { type: Number, default : 10},
+    },
     location : { type: String, default : "beach"}
 });
 

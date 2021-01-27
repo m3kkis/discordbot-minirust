@@ -21,7 +21,7 @@
         "emoji" : ":desert:",
         "description" : "*Zone rich in sulfur ore.*",
         "resource" : "ore_sulfur",
-        "from" : ["beach","forest","gas"]
+        "from" : ["beach","forest","gas_station"]
     },
     {
         "id" : "forest",
