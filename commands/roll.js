@@ -2,9 +2,9 @@ const Discord = require("discord.js");
 
 module.exports = {
     name: 'roll',
-    description: 'Displays a random number between 1-100.',
+    description: 'Displays a random number.',
     args: false,
-    usage: '<number>',
+    usage: '<optional:number>',
     execute(client, message, args){
 
         var embedded = new Discord.MessageEmbed();

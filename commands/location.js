@@ -4,7 +4,7 @@ const Players = require('../models/player');
 
 module.exports = {
     name: 'location',
-    description: 'View your current location or list all locations',
+    description: 'View players around you, list locations or view your location',
     args: false,
     aliases: ['loc'],
     usage: '<optional:list>',
