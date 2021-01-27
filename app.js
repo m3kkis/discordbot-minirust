@@ -4,7 +4,7 @@ const moment = require("moment");
 const fs = require('fs');
 
 const mongoose = require('mongoose');
-const Player = require('./models/Player'); 
+const Player = require('./models/player'); 
 
 const prefix = process.env.BOT_PREFIX;
 const client = new Discord.Client();
