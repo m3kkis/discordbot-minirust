@@ -51,6 +51,7 @@ client.on('message', message => {
      */
 
     if(!message.content.startsWith(prefix) || message.author.bot) return;
+    if(message.channel.id != process.env.BOT_CHANNEL) return message.reply('Please use the bot channel to play **miniRUST**.');
 
     const embedded = new Discord.MessageEmbed();
     embedded.setAuthor(message.member.user.tag, message.member.user.avatarURL());
