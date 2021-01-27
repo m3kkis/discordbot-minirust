@@ -3,7 +3,7 @@ const jsonLocation = require('../json/locations.json')
 
 module.exports = {
     name: 'map',
-    description: 'View the map.',
+    description: 'View the minirust map.',
     args: false,
     execute(client, message, args){
 
