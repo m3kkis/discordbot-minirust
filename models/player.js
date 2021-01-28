@@ -6,18 +6,30 @@ const playerSchema = new Schema(
     dsid : { type: String },
     tag : { type: String },
     username : { type: String },
+    location : { type: String, default : "beach" },
     condition : {
-        status : { type: String, default : "active"},
-        health : { type: Number, default : 100},
-        energy : { type: Number, default : 10},
+        status : { type: String, default : "active" },
+        health : { type: Number, default : 100 },
+        stamina : { type: Number, default : 10 },
     },
-    location : { type: String, default : "beach"},
+    equipment: {
+        weapon: { type: Array, default: [
+                { 
+                    id : "rock",
+                    name : "Rock",
+                    damage : 10,
+                }
+            ] 
+        },
+        armor: { type: Array, default: [] }
+    },
+    inventory: { type: Array, default: [] },
     base : {
-        id : { type: String},
-        location : { type: String},
-        type : { type: String},
-        health_current : { type: Number},
-        health : { type: Number},
+        id : { type: String },
+        location : { type: String },
+        type : { type: String },
+        health_current : { type: Number },
+        health : { type: Number },
     }
 });
 
