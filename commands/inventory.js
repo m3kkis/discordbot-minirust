@@ -10,6 +10,8 @@ module.exports = {
     aliases: ['inv'],
     execute(client, message, args, _Player){
 
+        console.log("[INVENTORY] Displaying inventory.");
+
         var embedded = new Discord.MessageEmbed();
         embedded.setAuthor(message.member.user.tag, message.member.user.avatarURL())
                 .setColor('#03b6fc')

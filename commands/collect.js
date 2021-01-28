@@ -60,6 +60,7 @@ module.exports = {
                     id : "ore_sulfur",
                     name : "Sulfur Ore",
                     description: "Smelts into sulfur",
+                    type: "resource",
                     quantity : config.YIELD_ORE_SULFUR
                 };
     
@@ -85,6 +86,7 @@ module.exports = {
                     id : "wood",
                     name : "Wood",
                     description: "Used for crafting/upgrading.",
+                    type: "resource",
                     quantity : config.YIELD_WOOD
                 };
     
@@ -113,6 +115,7 @@ module.exports = {
                     id : "ore_metal",
                     name : "Metal Ore",
                     description: "Smelts into metal fragments.",
+                    type: "resource",
                     quantity : config.YIELD_ORE_METAL
                 };
     
@@ -132,6 +135,7 @@ module.exports = {
                         id : "ore_hqm",
                         name : "HQM Ore",
                         description: "Smelts into HQM.",
+                        type: "resource",
                         quantity : config.YIELD_ORE_HQM
                     };
         
@@ -160,6 +164,7 @@ module.exports = {
                     id : "stone",
                     name : "Stone",
                     description: "Used for crafting/upgrading.",
+                    type: "resource",
                     quantity : config.YIELD_STONE
                 };
     
@@ -169,6 +174,7 @@ module.exports = {
             _Player.save();
 
         }
+        console.log("[COLLECT] Collected resource.");
 
         embedded.setColor('#78de87')
                 .setDescription(`You've successfully collected resource.`)

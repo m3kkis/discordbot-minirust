@@ -27,6 +27,8 @@ module.exports = {
         }
         else if(args[0] != undefined && args[0].toLowerCase() == "me")
         {
+            console.log("[LOCATION] Displaying user location.");
+
             let idx = jsonLocation.findIndex(x => x.id === _Player.location);
 
             if(_Player.location == "base")
@@ -42,6 +44,7 @@ module.exports = {
         }
         else
         {
+
             Players.find({}).then( _AllPlayers => {
     
                 var arrPlayers = [];
@@ -99,6 +102,8 @@ module.exports = {
                         { name: 'Bases near you:', value: '*-NONE-*' },
                     );
                 }
+
+                console.log("[LOCATION] Displaying surrounding.");
 
                 return message.channel.send(embedded);
             });

@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const moment = require("moment");
 
 module.exports = {
     name: 'drop',
@@ -15,6 +14,8 @@ module.exports = {
 
         if( isNaN(id) ) {
             
+            console.log("[DROP] NaN.");
+
             embedded.setColor('#ff4f4f')
                 .setDescription('That doesn\'t seem to be a valid NUMBER.');
 
@@ -27,14 +28,17 @@ module.exports = {
 
         if(_Player.inventory[id] == undefined)
         {
+            console.log("[DROP] Item number doesnt exist.");
+
             embedded.setColor('#ff4f4f')
-                .setDescription('That number doesn\'t exist in your inventory list');
+                .setDescription('That number doesn\'t exist in your inventory list')
+                .setFooter(`___\nType "${process.env.BOT_PREFIX}inv" to check inventory.`);
 
             return message.channel.send(embedded);
         }
         else
         {
-            console.log(`[DROP] Dropped item **${_Player.inventory[id].name}** successfully`);
+            console.log(`[DROP] Dropped item **${_Player.inventory[id].name}**`);
 
             _Player.inventory.splice(id,1);
             _Player.save();

@@ -22,6 +22,8 @@ module.exports = {
             {
                 if(_Player.inventory.length < config.MAX_INVENTORY)
                 {
+                    console.log("[REMOVE] Removing weapon.");
+
                     var removedItem =_Player.equipment.weapon.splice(0);
                     _Player.inventory.push(removedItem[0]);
                     _Player.save();
@@ -33,6 +35,8 @@ module.exports = {
                 }
                 else
                 {
+                    console.log("[REMOVE] Not enough space inventory.");
+
                     embedded.setColor('#ff4f4f')
                         .setDescription(`You dont have space in your inventory.`)
                         .setFooter(`___\nType "${process.env.BOT_PREFIX}inv" to check your inventory.`);
@@ -42,6 +46,8 @@ module.exports = {
             }
             else
             {
+                console.log("[REMOVE] Not equppied with weapon.");
+
                 embedded.setColor('#ff4f4f')
                     .setDescription(`You are not equipped with any weapons.`)
                     .setFooter(`___\nType "${process.env.BOT_PREFIX}inv" to know what you have equipped.`);
@@ -55,6 +61,8 @@ module.exports = {
             {
                 if(_Player.inventory.length < config.MAX_INVENTORY)
                 {
+                    console.log("[REMOVE] Removing armor.");
+
                     var removedItem =_Player.equipment.armor.splice(0);
                     _Player.inventory.push(removedItem[0]);
                     _Player.save();
@@ -66,6 +74,8 @@ module.exports = {
                 }
                 else
                 {
+                    console.log("[REMOVE] Not enough space inventory.");
+
                     embedded.setColor('#ff4f4f')
                         .setDescription(`You dont have space in your inventory.`)
                         .setFooter(`___\nType "${process.env.BOT_PREFIX}inv" to check your inventory.`);
@@ -75,6 +85,8 @@ module.exports = {
             }
             else
             {
+                console.log("[REMOVE] Not equppied with armor.");
+
                 embedded.setColor('#ff4f4f')
                     .setDescription(`You are not equipped with any armor.`)
                     .setFooter(`___\nType "${process.env.BOT_PREFIX}inv" to know what you have equipped.`);
@@ -84,6 +96,8 @@ module.exports = {
         }
         else
         {
+            console.log("[REMOVE] weapon or armor not properly typed.");
+
             embedded.setColor('#ff4f4f')
                 .setDescription(`Check if you type weapon or armor correctly, you can only remove those.`)
                 .setFooter(`___\nType "${process.env.BOT_PREFIX}inv" to know what you have equipped.`);

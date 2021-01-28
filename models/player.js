@@ -18,6 +18,7 @@ const playerSchema = new Schema(
                     id : "rock",
                     name : "Rock",
                     description: "Can punch stuff or people",
+                    type: "weapon",
                     quantity: 1,
                     damage : 10,
                 }
