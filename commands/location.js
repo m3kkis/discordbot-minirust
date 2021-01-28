@@ -61,7 +61,7 @@ module.exports = {
                     
                     if( otherPlayer.base.location == _Player.location)
                     {
-                        arrBases.push(otherPlayer.base.id);
+                        arrBases.push(otherPlayer.base);
                     }      
                 });
 
@@ -89,7 +89,7 @@ module.exports = {
                     arrBases.sort();
 
                     arrBases.forEach(base =>{
-                        baseFieldsToAdd += "- " + base + "\n";
+                        baseFieldsToAdd += "- " + base.id + " (" + base.type + ")" + "\n";
                     });
 
                     embedded.addFields(

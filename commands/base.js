@@ -5,7 +5,7 @@ const Players = require('../models/player');
 
 module.exports = {
     name: 'base',
-    description: 'View your base info, also used to build initial base at current location using <build>',
+    description: 'View base info, used to build initial base with <build>',
     args: false,
     usage: '<optional:build>',
     execute(client, message, args, _Player){
