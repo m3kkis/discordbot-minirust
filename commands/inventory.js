@@ -13,6 +13,26 @@ module.exports = {
         var embedded = new Discord.MessageEmbed();
         embedded.setAuthor(message.member.user.tag, message.member.user.avatarURL())
                 .setColor('#03b6fc')
+
+        if(_Player.equipment.weapon.length > 0)
+        {
+            embedded.addField('Hands',_Player.equipment.weapon[0].name,true);
+        }
+        else
+        {
+            embedded.addField('Hands',"*- Empty -*",true);
+        }
+
+        if(_Player.equipment.armor.length > 0)
+        {
+            embedded.addField('Armor',_Player.equipment.armor[0].name,true);
+        }
+        else
+        {
+            embedded.addField('Armor',"*- Naked -*",true);
+        }
+
+        embedded.addField('\u200B',"\u200B",true);
         
         if(_Player.inventory != undefined && _Player.inventory.length > 0)
         {
