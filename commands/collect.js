@@ -100,6 +100,8 @@ module.exports = {
             var idxMetal = _Player.inventory.findIndex(x => x.id === "ore_metal");
             var idxHQM = _Player.inventory.findIndex(x => x.id === "ore_hqm");
 
+            var chance = Math.floor(Math.random() * 100);
+
             if(idxMetal > -1)
             {
                 _Player.inventory[idxMetal].quantity += config.YIELD_ORE_METAL;
@@ -117,22 +119,27 @@ module.exports = {
                 _Player.inventory.push(ore_metal)
             }
 
-            if(idxHQM > -1)
+            if(chance <= config.YIELD_ORE_HQM_CHANCE)
             {
-                _Player.inventory[idxHQM].quantity += config.YIELD_ORE_METAL;
-                _Player.markModified('inventory');
+                if(idxHQM > -1)
+                {
+                    _Player.inventory[idxHQM].quantity += config.YIELD_ORE_HQM;
+                    _Player.markModified('inventory');
+                }
+                else
+                {
+                    let ore_hqm = {
+                        id : "ore_hqm",
+                        name : "HQM Ore",
+                        description: "Smelts into HQM.",
+                        quantity : config.YIELD_ORE_HQM
+                    };
+        
+                    _Player.inventory.push(ore_hqm)
+                }
             }
-            else
-            {
-                let ore_hqm = {
-                    id : "ore_hqm",
-                    name : "HQM Ore",
-                    description: "Smelts into HQM.",
-                    quantity : config.YIELD_ORE_HQM
-                };
-    
-                _Player.inventory.push(ore_hqm)
-            }
+
+            
 
             _Player.save();
 
