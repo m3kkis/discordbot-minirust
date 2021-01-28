@@ -29,7 +29,7 @@ module.exports = {
             console.log("[COLLECT] No tool equipped");
             embedded.setColor('#ff4f4f')
                 .setDescription(`Must equip a tool to collect resource.`)
-                .setFooter(`___\nType "${process.env.BOT_PREFIX}equip <#id>" to equip a tool.`);
+                .setFooter(`___\nType "${process.env.BOT_PREFIX}use <#id>" to equip a tool.`);
             return message.channel.send(embedded);
         }
 

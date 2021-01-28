@@ -16,11 +16,11 @@ module.exports = {
 
         if(_Player.equipment.weapon.length > 0)
         {
-            embedded.addField('Hands',_Player.equipment.weapon[0].name,true);
+            embedded.addField('Weapon',_Player.equipment.weapon[0].name,true);
         }
         else
         {
-            embedded.addField('Hands',"*- Empty -*",true);
+            embedded.addField('Weapon','*- Empty -*',true);
         }
 
         if(_Player.equipment.armor.length > 0)
@@ -29,10 +29,10 @@ module.exports = {
         }
         else
         {
-            embedded.addField('Armor',"*- Naked -*",true);
+            embedded.addField('Armor','*- Naked -*',true);
         }
 
-        embedded.addField('\u200B',"\u200B",true);
+        embedded.addField('\u200B','\u200B',true);
         
         if(_Player.inventory != undefined && _Player.inventory.length > 0)
         {

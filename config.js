@@ -1,6 +1,7 @@
 var config = {};
 
 config.MAX_INVENTORY = 5;
+
 config.YIELD_WOOD = 1;
 config.YIELD_STONE = 1;
 config.YIELD_ORE_SULFUR = 1;
