@@ -52,7 +52,7 @@ module.exports = {
 
                     _Player.inventory[idx].quantity -= cost;
 
-                    if(_Player.inventory[idx].quantity >= 0)
+                    if(_Player.inventory[idx].quantity <= 0)
                     {
                         _Player.inventory.splice(idx,1);
                     }
@@ -79,13 +79,109 @@ module.exports = {
             {
                 if(_Player.base.size < config.BASE_MAX_SIZE)
                 {
-                    _Player.base.size++;
-                    _Player.save();
 
-                    embedded.setColor('#78de87')
-                        .setDescription(`You successfully upgraded your base.`)
+                    if(_Player.base.tier >= 2)
+                    {
 
-                    return message.channel.send(embedded);
+                        var idx = _Player.inventory.findIndex(x => x.id === config.BASE_UPGRADE_MATERIALS[_Player.base.tier]);
+                        var cost = config.BASE_UPGRADE_MATERIALS_COST[_Player.base.tier];
+
+                        var idxWood = _Player.inventory.findIndex(x => x.id === config.BASE_UPGRADE_MATERIALS[0]);
+                        var costWood = config.BASE_UPGRADE_MATERIALS_COST[0];
+                        
+                        if(idx < 0 || idxWood < 0)
+                        {
+                            console.log("[UPGRADE] resource not found");
+                            embedded.setColor('#ff4f4f')
+                                .setDescription('You are missing the resources in your inventory to upgrade.')
+                                .setFooter(`___\nType "${process.env.BOT_PREFIX}inv" to check your inventory.`);
+                            return message.channel.send(embedded);
+                        }
+
+                        if(_Player.inventory[idx].quantity < cost && _Player.inventory[idxWood].quantity < costWood )
+                        {
+                            console.log("[UPGRADE] not enough resource quantity");
+                            embedded.setColor('#ff4f4f')
+                                .setDescription('You do not have enough resources to upgrade.')
+                                .setFooter(`___\nType "${process.env.BOT_PREFIX}upgrade" to view base upgrades costs.`);
+                            return message.channel.send(embedded);
+                        }
+
+                        _Player.inventory[idx].quantity -= cost;
+                        _Player.inventory[idxWood].quantity -= costWood;
+
+                        if(_Player.inventory[idx].quantity <= 0 && _Player.inventory[idxWood].quantity <= 0)
+                        {
+                            if(idx > idxWood)
+                            {
+                                _Player.inventory.splice(idx,1);
+                                _Player.inventory.splice(idxWood,1);
+                            }
+                            else if(idxWood > idx)
+                            {
+                                _Player.inventory.splice(idxWood,1);
+                                _Player.inventory.splice(idx,1);
+                            }
+                        }
+                        else if(_Player.inventory[idx].quantity <= 0)
+                        {
+                            _Player.inventory.splice(idx,1);
+                        }
+                        else if(_Player.inventory[idxWood].quantity <= 0)
+                        {
+                            _Player.inventory.splice(idxWood,1);
+                        }
+
+                        _Player.base.size++;
+                        _Player.markModified('inventory');
+                        _Player.save();
+
+                        embedded.setColor('#78de87')
+                            .setDescription(`You successfully upgraded your base.`)
+
+                        return message.channel.send(embedded);
+
+                    }
+                    else
+                    {
+                        var idx = _Player.inventory.findIndex(x => x.id === config.BASE_UPGRADE_MATERIALS[_Player.base.tier]);
+                        var cost = config.BASE_UPGRADE_MATERIALS_COST[_Player.base.tier];
+                        
+                        if(idx < 0)
+                        {
+                            console.log("[UPGRADE] resource not found");
+                            embedded.setColor('#ff4f4f')
+                                .setDescription('You are missing the resources in your inventory to upgrade.')
+                                .setFooter(`___\nType "${process.env.BOT_PREFIX}inv" to check your inventory.`);
+                            return message.channel.send(embedded);
+                        }
+
+                        if(_Player.inventory[idx].quantity < cost)
+                        {
+                            console.log("[UPGRADE] not enough resource quantity");
+                            embedded.setColor('#ff4f4f')
+                                .setDescription('You do not have enough resources to upgrade.')
+                                .setFooter(`___\nType "${process.env.BOT_PREFIX}upgrade" to view base upgrades costs.`);
+                            return message.channel.send(embedded);
+                        }
+
+                        
+                        _Player.inventory[idx].quantity -= cost;
+
+                        if(_Player.inventory[idx].quantity <= 0)
+                        {
+                            _Player.inventory.splice(idx,1);
+                        }
+
+                        _Player.base.size++;
+                        _Player.save();
+
+                        embedded.setColor('#78de87')
+                            .setDescription(`You successfully upgraded your base.`)
+
+                        return message.channel.send(embedded);
+                    }
+                    
                 }
                 else
                 {
