@@ -29,7 +29,11 @@ BOT_CHANNEL   // ID of the Main Chat Channel
 BOT_PREFIX=!
 BOT_TOKEN= BfGeThTWwrJwr5rjRJ56tyj.wrjWrt.sSDfhtyjiMKer-QEWytqecnNety
 DB_HOST=mongodb://127.0.0.1/minirust
-CHANNEL_MAIN_ID=6337368621699517390
+
+GUILD_ID=61344368f621619917392
+MAIN_CHANNEL=6333f6862611991517394
+BOT_CHANNEL=63373162f1699581392
+DEBUG_CHANNEL=6233368141699517391
 ```
 
 That is it, you are good to start the bot now.
@@ -49,7 +53,8 @@ pm2 start app.js
 Make sure you add the id of a channel for the bot in the .env file.
 
 # Tutorial
-With the new update coming to this bot, lots of things have changed. Heres a quick tutorial on how to play this discord game.
+TUTORIAL IS NOT YET FINISHED NOR STARTED, i'll get to this once the bot is in a functional state.
+For now use the !help command.
 
 ### Settling down
 First thing to do is to find a location that suits you. You can check the map using `!map` and then you can travel using the command `!go <location>`. The tiles must be touching each other to be able to travel to the location. If
