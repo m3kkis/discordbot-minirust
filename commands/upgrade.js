@@ -29,11 +29,11 @@ module.exports = {
                 {
 
                     var idx = _Player.inventory.findIndex(x => x.id === config.BASE_UPGRADE_MATERIALS[_Player.base.tier + 1]);
-                    var cost = config.BASE_UPGRADE_MATERIALS_COST[_Player.base.tier + 1]
+                    var cost = config.BASE_UPGRADE_MATERIALS_COST[_Player.base.tier + 1] * _Player.base.size;
 
                     if(idx < 0)
                     {
-                        console.log("[UPGRADE] resource not found")
+                        console.log("[UPGRADE] resource not found");
                         embedded.setColor('#ff4f4f')
                             .setDescription('You are missing the resources in your inventory to upgrade.')
                             .setFooter(`___\nType "${process.env.BOT_PREFIX}inv" to check your inventory.`);
@@ -42,7 +42,7 @@ module.exports = {
 
                     if(_Player.inventory[idx].quantity < cost)
                     {
-                        console.log("[UPGRADE] not enough resource quantity")
+                        console.log("[UPGRADE] not enough resource quantity");
                         embedded.setColor('#ff4f4f')
                             .setDescription('You do not have enough resources to upgrade.')
                             .setFooter(`___\nType "${process.env.BOT_PREFIX}upgrade" to view base upgrades costs.`);
@@ -70,7 +70,7 @@ module.exports = {
                 {
                     console.log("[UPGRADE] Maxed out base tier");
                     embedded.setColor('#ff4f4f')
-                        .setDescription('You have already maxed out the base strucutre')
+                        .setDescription('You have already maxed out the base foundation')
                         .setFooter(`___\nType "${process.env.BOT_PREFIX}base" to view base info.`);
                     return message.channel.send(embedded);
                 }
