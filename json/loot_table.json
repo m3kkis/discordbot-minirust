@@ -1,0 +1,36 @@
+[
+    [
+        {
+            "name" : "Ration Crate",
+            "scrap" : 0,
+            "items" : []
+        },
+        {
+            "name" : "Barrel",
+            "scrap" : 2,
+            "items" : []
+        },
+        {
+            "name" : "Crate",
+            "scrap" : 5,
+            "items" : []
+        }
+
+    ],
+    [
+        {
+            "name" : "Military Crate",
+            "items" : []
+        },
+        {
+            "name" : "Medical Crate",
+            "items" : []
+        }
+    ],
+    [
+        {
+            "name" : "Elite Tier Crate",
+            "items" : []
+        }
+    ]
+]

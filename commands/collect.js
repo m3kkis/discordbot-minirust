@@ -38,7 +38,7 @@ module.exports = {
         {
             console.log("[COLLECT] Not enough inventory space.");
             embedded.setColor('#ff4f4f')
-                .setDescription(`You do not have enough space in your inventory.`)
+                .setDescription(`Your inventory is full.`)
                 .setFooter(`___\nType "${process.env.BOT_PREFIX}inv" to view your inventory.`);
             return message.channel.send(embedded);
         }

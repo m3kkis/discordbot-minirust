@@ -38,7 +38,7 @@ module.exports = {
                         {
                             console.log("[BASE] Building a base.");
     
-                            _Player.base.id = Utils.generateID(4);
+                            _Player.base.id = "B" + Utils.generateID(4);
                             _Player.base.location = _Player.location;
                             _Player.base.tier = 0;
                             _Player.base.size = 1;

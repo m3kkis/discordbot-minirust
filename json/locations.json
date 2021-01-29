@@ -6,6 +6,7 @@
         "description" : "*Starting zone, not much resource to gather here.*",
         "canBuild":true,
         "resource" : "none",
+        "loot_tier" : 0,
         "from" : ["desert","mountain","base"]
     },
     {
@@ -15,6 +16,7 @@
         "description" : "*Zone rich in metal ore.*",
         "canBuild":true,
         "resource" : "ore_metal",
+        "loot_tier" : 0,
         "from" : ["mountain","snow","base"]
     },
     {
@@ -24,6 +26,7 @@
         "description" : "*Zone rich in sulfur ore.*",
         "canBuild":true,
         "resource" : "ore_sulfur",
+        "loot_tier" : 0,
         "from" : ["beach","forest","gas_station","base"]
     },
     {
@@ -33,6 +36,7 @@
         "description" : "*Zone rich in wood.*",
         "canBuild":true,
         "resource" : "wood",
+        "loot_tier" : 0,
         "from" : ["desert","snow","base"]
     },
     {
@@ -42,6 +46,7 @@
         "description" : "*Has a recycler and some loot.*",
         "canBuild":false,
         "resource" : "none",
+        "loot_tier" : 0,
         "from" : ["desert"]
     },
     {
@@ -51,6 +56,7 @@
         "description" : "*Zone rich in stone.*",
         "canBuild":true,
         "resource" : "stone",
+        "loot_tier" : 0,
         "from" : ["beach","cave","satellite_dish","base"]
     },
     {
@@ -60,6 +66,7 @@
         "description" : "*Requires a _BLUE_ card to access higher tier loot room.*",
         "canBuild":false,
         "resource" : "none",
+        "loot_tier" : 2,
         "from" : ["snow"]
     },
     {
@@ -69,6 +76,7 @@
         "description" : "*Requires a _GREEN_ card to access higher tier loot room.*",
         "canBuild":false,
         "resource" : "none",
+        "loot_tier" : 1,
         "from" : ["mountain"]
     },
     {
@@ -78,6 +86,7 @@
         "description" : "*Cold, not much resources to gather here.*",
         "canBuild":true,
         "resource" : "none",
+        "loot_tier" : 0,
         "from" : ["cave","forest","power_plant","base"]
     }
 ]

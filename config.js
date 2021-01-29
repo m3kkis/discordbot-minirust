@@ -17,4 +17,8 @@ config.BASE_TYPES = ['twig','wood','stone','metal','armored'];
 config.BASE_UPGRADE_MATERIALS = ['wood','wood','stone','metal_fragments','hqm'];
 config.BASE_UPGRADE_MATERIALS_COST = [260,1300,1560,1040,131];
 
+//LOOTING
+config.LOOT_MAX_ITEMS = 3;
+
+
 module.exports = config;
