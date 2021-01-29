@@ -30,7 +30,8 @@ const playerSchema = new Schema(
     base : {
         id : { type: String },
         location : { type: String },
-        type : { type: String },
+        tier : { type: Number, default : 0 },
+        size : { type: Number, default : 1 },
         health_current : { type: Number },
         health : { type: Number },
     }

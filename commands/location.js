@@ -2,6 +2,8 @@ const Discord = require("discord.js");
 const jsonLocation = require('../json/locations.json')
 const Players = require('../models/player'); 
 
+const config = require('../config');
+
 module.exports = {
     name: 'location',
     description: 'View players around you, list locations or view your location',
@@ -89,7 +91,7 @@ module.exports = {
                     arrBases.sort();
 
                     arrBases.forEach(base =>{
-                        baseFieldsToAdd += "- " + base.id + " (" + base.type + ")" + "\n";
+                        baseFieldsToAdd += "- " + base.id + " (" + config.BASE_TYPES[base.tier] + ")" + "\n";
                     });
 
                     embedded.addFields(

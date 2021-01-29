@@ -1,7 +1,9 @@
 const Discord = require("discord.js");
 const jsonLocation = require('../json/locations.json')
 const Utils = require("../lib/utils");
-const Players = require('../models/player'); 
+const Players = require('../models/player');
+
+const config = require('../config');
 
 module.exports = {
     name: 'base',
@@ -38,7 +40,8 @@ module.exports = {
     
                             _Player.base.id = Utils.generateID(4);
                             _Player.base.location = _Player.location;
-                            _Player.base.type = "twig";
+                            _Player.base.tier = 0;
+                            _Player.base.size = 1;
                             _Player.base.health_current = 10;
                             _Player.base.health = 10;
                             _Player.save();
@@ -79,7 +82,7 @@ module.exports = {
                 var embText = `
                     **ID:** *${_Player.base.id}*
                     **Location:** *${_Player.base.location}*
-                    **Type:** *${_Player.base.type}*
+                    **Structure:** *${config.BASE_TYPES[_Player.base.tier]}*
                     **Health:** *${_Player.base.health_current}/${_Player.base.health}*
                 `;
 
