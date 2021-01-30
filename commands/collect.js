@@ -5,7 +5,7 @@ const config = require('../config');
 
 module.exports = {
     name: 'collect',
-    description: 'Collect resource.',
+    description: 'Collect resource at current location.',
     args: false,
     execute(client, message, args, _Player){
 

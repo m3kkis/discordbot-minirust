@@ -56,19 +56,31 @@ Make sure you add the id of a channel for the bot in the .env file.
 TUTORIAL IS NOT YET FINISHED NOR STARTED, i'll get to this once the bot is in a functional state.
 For now use the !help command.
 
-### Settling down
-First thing to do is to find a location that suits you. You can check the map using `!map` and then you can travel using the command `!go <location>`. The tiles must be touching each other to be able to travel to the location. If
+Start by moving around with `!go <location>`, once you find a nice spot to settle you can do `!base build` this will construct a base at your location, a small one. And you can enter it with `!go base`. If you are unsure of the locations do `!map` or `!loc list`. Whenever you move around you can see who is around with the command `!loc` and if you forget where you are you can always do `!loc me`.
+
+Once you entered your base you can view the required materials to upgrade your base with `!upgrade`. When you decided what you want to upgrade first. Leave your base and head towards a resource location. On your way make sure you look around who is next to you. When you arrive at the resource location you use the command `!collect` and that will gather the resource. On your way back you can stop by each location and do `!loot` to find random loot around you that can be used for crafting other tools.
+
+You can always check your inventory `!inv` to see what you have on you. If you have any items taht you no longer need you do `!drop <inventory_item_number>`. Be careful because once its dropped you can no longer get it back.
+
+You can always refer to commands using `!help` in chat.
 
 
 #### I believe that covers the tutorial.
 
 ## Commands (so far)
 * `!base <optional:build>` View your base info, also used to build initial base at current location using build.
+* `!collect` Collect resource at current location.
+* `!drop <inventory_item_number>` Drop an item from your inventory.
 * `!go <location>` Travel to another location. This uses energy.
 * `!help` Get the list of commands.
+* `!inventory` Show your inventory.
 * `!location <optional:list,me>` View players around you, list locations or view your location.
+* `!loot` Scavange some loot in your location.
 * `!map` View the minirust map.
+* `!remove <weapon or armor>` Remove weapon or armor.
 * `!roll <amount>` Displays a random number, add a number to set amount to roll.
+* `!upgrade <optional:id>` Upgrade your base.
+* `!use <inventory_item_number>` Use/equip an item from your inventory.
 
 
 ### Notes
