@@ -49,14 +49,14 @@ client.once('ready', () => {
 
     //Create role for miniRUST, after that don't forget to set role as separate.
     try{
-        var role = guild.roles.cache.find(x => x.name === "miniRUST");
-        if(role.name == "miniRUST") {
-            console.log("[APP] miniRUST Role Already Exists");
+        var role = guild.roles.cache.find(x => x.name === "mRUST");
+        if(role.name == "mRUST") {
+            console.log("[APP] mRUST Role Already Exists");
         }
     }
     catch(e){
-        console.log("[APP] Role doesn't exists, creating role miniRUST");
-        guild.roles.create({ data: { name: 'miniRUST', color: '#d62d2d', permissions: ['CREATE_INSTANT_INVITE', 'CHANGE_NICKNAME', 'VIEW_CHANNEL', 'SEND_MESSAGES', 'SEND_TTS_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'READ_MESSAGE_HISTORY', 'MENTION_EVERYONE', 'USE_EXTERNAL_EMOJIS', 'ADD_REACTIONS', 'CONNECT', 'SPEAK', 'STREAM', 'USE_VAD'] } });
+        console.log("[APP] Role doesn't exists, creating role mRUST");
+        guild.roles.create({ data: { name: 'mRUST', color: '#d62d2d', permissions: ['CREATE_INSTANT_INVITE', 'CHANGE_NICKNAME', 'VIEW_CHANNEL', 'SEND_MESSAGES', 'SEND_TTS_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'READ_MESSAGE_HISTORY', 'MENTION_EVERYONE', 'USE_EXTERNAL_EMOJIS', 'ADD_REACTIONS', 'CONNECT', 'SPEAK', 'STREAM', 'USE_VAD'] } });
     }
 
 });
@@ -99,7 +99,7 @@ client.on('message', message => {
     
     if(commandName == "join")
     {
-        var userRole = message.guild.member(message.author.id).roles.cache.find(r => r.name === "miniRUST")
+        var userRole = message.guild.member(message.author.id).roles.cache.find(r => r.name === "mRUST")
 
         if(userRole != undefined)
         {
@@ -109,7 +109,7 @@ client.on('message', message => {
         else
         {
             
-            var role = message.guild.roles.cache.find(r => r.name === "miniRUST");
+            var role = message.guild.roles.cache.find(r => r.name === "mRUST");
             message.guild.member(message.author.id).roles.add(role);
 
             var attachment = new Discord.MessageAttachment('./images/minirust_logo.png', 'minirust_logo.png');
@@ -140,7 +140,7 @@ client.on('message', message => {
     else if(commandName == "leave")
     {
 
-        var userRole = message.guild.member(message.author.id).roles.cache.find(r => r.name === "miniRUST")
+        var userRole = message.guild.member(message.author.id).roles.cache.find(r => r.name === "mRUST")
 
         if(userRole == undefined)
         {
@@ -149,7 +149,7 @@ client.on('message', message => {
         }
         else
         {
-            var role = message.guild.roles.cache.find(r => r.name === "miniRUST");
+            var role = message.guild.roles.cache.find(r => r.name === "mRUST");
             message.guild.member(message.author.id).roles.remove(role);
 
             var embedded = new Discord.MessageEmbed();
