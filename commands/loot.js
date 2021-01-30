@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const jsonLocations = require('../json/locations.json');
-const jsonLoot = require('../json/loot_table.json');
+
 const Utils = require("../lib/utils");
 const config = require('../config');
 
@@ -31,31 +31,78 @@ module.exports = {
         {
 
             var chance = Math.floor(Math.random() * 100);
+            var replyTextFrom;
+            var replyTextLoot = "*-NOTHING-*";
 
             if(jsonLocations[idx].loot_tier == 0)
             {
 
-                if(chance <= 20)
+                if(chance <= config.LOOT_CHANCE_RATION)
                 {
-                    console.log("1");
+                    replyTextFrom = "You got some loot from a **RATION CRATE**";
+                    replyTextLoot = "";
+                    var nbrLoot = Math.floor(Math.random() * config.LOOT_MAX_ITEMS + 1);
+
+                    if(nbrLoot > 0)
+                    {
+                        for(var i = 0; i < nbrLoot; i++)
+                        {
+                            if(_Player.inventory.length < config.MAX_INVENTORY)
+                            {
+                                let itemsReceived = Utils.giveRandomLootItem(_Player, "ration");
+                                console.log(itemsReceived.quantity);
+                                replyTextLoot += "- _" + itemsReceived.name + " (" + itemsReceived.quantity + ")_\n";
+                            }
+                        }
+                    }
                 }
-                else if(chance <= 40)
+                else if(chance <= config.LOOT_CHANCE_CRATE)
                 {
-                    console.log("2");
+                    replyTextFrom = "You got some loot from a **CRATE**";
+                    replyTextLoot = "- _Scrap (" + config.SCRAP_MAX_CRATE + ")_\n";
 
-                    Utils.giveScrap(_Player, jsonLoot[jsonLocations[idx].loot_tier][1].scrap, true);
-                    giveLootItems(config.LOOT_MAX_ITEMS);
+                    Utils.giveScrap(_Player, config.SCRAP_MAX_CRATE, false)
 
+                    var nbrLoot = Math.floor(Math.random() * config.LOOT_MAX_ITEMS);
+
+                    if(nbrLoot > 0)
+                    {
+                        for(var i = 0; i < nbrLoot; i++)
+                        {
+                            if(_Player.inventory.length < config.MAX_INVENTORY)
+                            {
+                                let itemsReceived = Utils.giveRandomLootItem(_Player, "crate");
+                                console.log(itemsReceived.quantity);
+                                replyTextLoot += "- _" + itemsReceived.name + " (" + itemsReceived.quantity + ")_\n";
+                            }
+                        }
+                    }
                 }
-                else if(chance <= 80){
-                    console.log("3");
+                else if(chance <= config.LOOT_CHANCE_BARREL)
+                {
+                    replyTextFrom = "You got some loot from a **BARREL**";
+                    replyTextLoot = "- _Scrap (" + config.SCRAP_MAX_BARREL + ")_\n";
 
-                    Utils.giveScrap(_Player, jsonLoot[jsonLocations[idx].loot_tier][2].scrap, true)
+                    Utils.giveScrap(_Player, config.SCRAP_MAX_BARREL, false)
 
+                    var nbrLoot = Math.floor(Math.random() * config.LOOT_MAX_ITEMS);
+
+                    if(nbrLoot > 0)
+                    {
+                        for(var i = 0; i < nbrLoot; i++)
+                        {
+                            if(_Player.inventory.length < config.MAX_INVENTORY)
+                            {
+                                let itemsReceived = Utils.giveRandomLootItem(_Player,"barrel");
+                                console.log(itemsReceived.quantity);
+                                replyTextLoot += "- _" + itemsReceived.name + " (" + itemsReceived.quantity + ")_\n";
+                            }
+                        }
+                    }
                 }
                 else
                 {
-                    console.log("4");
+                    replyTextFrom = "You didn't find anything to loot";
                 }
 
             }
@@ -68,10 +115,13 @@ module.exports = {
 
             }
 
+            _Player.markModified('inventory');
+            _Player.save();
+
             console.log("[LOOT] Looting success.");
             embedded.setColor('#78de87')
-                .setDescription(`You successfully looted.`)
-                .addField('You received','*-NOTHING-*',false)
+                .setDescription(replyTextFrom)
+                .addField('You received',replyTextLoot,false)
             return message.channel.send(embedded);
         }
         else
@@ -82,7 +132,5 @@ module.exports = {
                 .setFooter(`___\nType "${process.env.BOT_PREFIX}map" to view the map.`);
             return message.channel.send(embedded);
         }
-
-
     }
 }

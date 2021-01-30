@@ -1,0 +1,12 @@
+{
+    "items" : [
+        {
+            "id" : "cloth",
+            "name" : "Cloth",
+            "description": "Crafting material.",
+            "type": "crafting",
+            "stackable":true,
+            "quantity" : 2
+        }
+    ]
+}

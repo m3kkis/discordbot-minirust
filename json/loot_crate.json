@@ -1,0 +1,12 @@
+{
+    "items" : [
+        {
+            "id" : "clothCrate",
+            "name" : "Cloth Crate",
+            "description": "Crafting material.",
+            "type": "crafting",
+            "stackable":true,
+            "quantity" : 2
+        }
+    ]
+}

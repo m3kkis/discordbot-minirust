@@ -1,0 +1,12 @@
+{
+    "items" : [
+        {
+            "id" : "clothRation",
+            "name" : "Cloth Ration",
+            "description": "Crafting material.",
+            "type": "crafting",
+            "stackable":true,
+            "quantity" : 2
+        }
+    ]
+}

@@ -1,0 +1,44 @@
+{
+    "resources" : [
+        {
+            "id" : "ore_sulfur",
+            "name" : "Sulfur Ore",
+            "description": "Smelts into sulfur",
+            "type": "resource",
+            "stackable": true,
+            "quantity" : 1
+        },
+        {
+            "id" : "wood",
+            "name" : "Wood",
+            "description": "Used for crafting/upgrading.",
+            "type": "resource",
+            "stackable": true,
+            "quantity" : 1
+        },
+        {
+            "id" : "ore_metal",
+            "name" : "Metal Ore",
+            "description": "Smelts into metal fragments.",
+            "type": "resource",
+            "stackable": true,
+            "quantity" : 1
+        },
+        {
+            "id" : "ore_hqm",
+            "name" : "HQM Ore",
+            "description": "Smelts into HQM.",
+            "type": "resource",
+            "stackable": true,
+            "quantity" : 1
+        },
+        {
+            "id" : "stone",
+            "name" : "Stone",
+            "description": "Used for crafting/upgrading.",
+            "type": "resource",
+            "stackable": true,
+            "quantity" : 1
+        }
+    ]
+}

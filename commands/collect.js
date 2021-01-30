@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 
+const Utils = require("../lib/utils");
 const config = require('../config');
 
 module.exports = {
@@ -47,133 +48,43 @@ module.exports = {
 
         if(_Player.location == "desert")
         {
-            var idx = _Player.inventory.findIndex(x => x.id === "ore_sulfur");
-
-            if(idx > -1)
-            {
-                _Player.inventory[idx].quantity += config.YIELD_ORE_SULFUR;
-                _Player.markModified('inventory');
-            }
-            else
-            {
-                let ore_sulfur = {
-                    id : "ore_sulfur",
-                    name : "Sulfur Ore",
-                    description: "Smelts into sulfur",
-                    type: "resource",
-                    quantity : config.YIELD_ORE_SULFUR
-                };
-    
-                _Player.inventory.push(ore_sulfur)
-            }
-            
+            Utils.giveResources(_Player, "ore_sulfur")
+            _Player.markModified('inventory');
             _Player.save();
-            
         }
         else if(_Player.location == "forest")
         {
 
-            var idx = _Player.inventory.findIndex(x => x.id === "wood");
-
-            if(idx > -1)
-            {
-                _Player.inventory[idx].quantity += config.YIELD_WOOD;
-                _Player.markModified('inventory');
-            }
-            else
-            {
-                let wood = {
-                    id : "wood",
-                    name : "Wood",
-                    description: "Used for crafting/upgrading.",
-                    type: "resource",
-                    quantity : config.YIELD_WOOD
-                };
-    
-                _Player.inventory.push(wood)
-            }
-            
+            Utils.giveResources(_Player, "wood")
+            _Player.markModified('inventory');
             _Player.save();
 
         }
         else if(_Player.location == "cave")
         {
 
-            var idxMetal = _Player.inventory.findIndex(x => x.id === "ore_metal");
-            var idxHQM = _Player.inventory.findIndex(x => x.id === "ore_hqm");
-
             var chance = Math.floor(Math.random() * 100);
 
-            if(idxMetal > -1)
-            {
-                _Player.inventory[idxMetal].quantity += config.YIELD_ORE_METAL;
-                _Player.markModified('inventory');
-            }
-            else
-            {
-                let ore_metal = {
-                    id : "ore_metal",
-                    name : "Metal Ore",
-                    description: "Smelts into metal fragments.",
-                    type: "resource",
-                    quantity : config.YIELD_ORE_METAL
-                };
-    
-                _Player.inventory.push(ore_metal)
-            }
+            Utils.giveResources(_Player, "ore_metal")
 
             if(chance <= config.YIELD_ORE_HQM_CHANCE)
             {
-                if(idxHQM > -1)
-                {
-                    _Player.inventory[idxHQM].quantity += config.YIELD_ORE_HQM;
-                    _Player.markModified('inventory');
-                }
-                else
-                {
-                    let ore_hqm = {
-                        id : "ore_hqm",
-                        name : "HQM Ore",
-                        description: "Smelts into HQM.",
-                        type: "resource",
-                        quantity : config.YIELD_ORE_HQM
-                    };
-        
-                    _Player.inventory.push(ore_hqm)
-                }
+                Utils.giveResources(_Player, "ore_hqm")
             }
 
-            
-
+            _Player.markModified('inventory');
             _Player.save();
 
         }
         else if(_Player.location == "mountain")
         {
 
-            var idx = _Player.inventory.findIndex(x => x.id === "stone");
-
-            if(idx > -1)
-            {
-                _Player.inventory[idx].quantity += config.YIELD_STONE;
-                _Player.markModified('inventory');
-            }
-            else
-            {
-                let stone = {
-                    id : "stone",
-                    name : "Stone",
-                    description: "Used for crafting/upgrading.",
-                    type: "resource",
-                    quantity : config.YIELD_STONE
-                };
-    
-                _Player.inventory.push(stone)
-            }
-            
+            Utils.giveResources(_Player, "stone")
+            _Player.markModified('inventory');
             _Player.save();
 
         }
+        
         console.log("[COLLECT] Collected resource.");
 
         embedded.setColor('#78de87')
