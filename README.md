@@ -21,7 +21,11 @@ This project uses dotenv package so you wil need to create a `.env` file next to
 BOT_PREFIX=   // Place a prefix to start your commands
 BOT_TOKEN=    // Your bot secret token
 DB_HOST=      // URL to your database
-BOT_CHANNEL   // ID of the Main Chat Channel
+
+GUILD_ID=       //ID of server
+MAIN_CHANNEL=   //ID of main chat channel where bot is not located
+BOT_CHANNEL=    //ID of the channel where you want to play with bot
+DEBUG_CHANNEL=  //ID to debug your bot during development
 ```
 
 ***Example***
@@ -50,11 +54,13 @@ pm2 start app.js
 ```
 
 ## After first start up
-Make sure you add the id of a channel for the bot in the .env file.
+Put bot role to top level and keep the mRUST role that is automatically created below it.
 
 # Tutorial
 TUTORIAL IS NOT YET FINISHED NOR STARTED, i'll get to this once the bot is in a functional state.
 For now use the !help command.
+
+To join the game do `!join` if ever you want to leave the channel, do `!leave`, your progress will be still saved.
 
 Start by moving around with `!go <location>`, once you find a nice spot to settle you can do `!base build` this will construct a base at your location, a small one. And you can enter it with `!go base`. If you are unsure of the locations do `!map` or `!loc list`. Whenever you move around you can see who is around with the command `!loc` and if you forget where you are you can always do `!loc me`.
 
