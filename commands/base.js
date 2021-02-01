@@ -42,6 +42,12 @@ module.exports = {
                             _Player.base.location = _Player.location;
                             _Player.base.tier = 0;
                             _Player.base.size = 1;
+                            _Player.base.space_used = 0;
+                            _Player.base.sleeping_bag = 0;
+                            _Player.base.workbench = 0;
+                            _Player.base.research_table = 0;
+                            _Player.base.storage = 0;
+                            _Player.base.furnace = 0;
                             _Player.base.health_current = 10;
                             _Player.base.health = 10;
                             _Player.save();

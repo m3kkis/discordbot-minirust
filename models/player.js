@@ -32,6 +32,12 @@ const playerSchema = new Schema(
         location : { type: String },
         tier : { type: Number, default : 0 },
         size : { type: Number, default : 1 },
+        space_used : { type: Number, default : 0 },
+        sleeping_bag : { type: Number, default : 0 },
+        workbench : { type: Number, default : 0 },
+        research_table : { type: Number, default : 0 },
+        storage : { type: Number, default : 0 },
+        furnace : { type: Number, default : 0 },
         health_current : { type: Number },
         health : { type: Number },
     }

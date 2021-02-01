@@ -192,6 +192,10 @@ module.exports = {
                     return message.channel.send(embedded);
                 }
             }
+            else if(args[0] == "3")
+            {
+
+            }
             else
             {
                 console.log("[UPGRADE] Incorrect upgrade number")
@@ -206,8 +210,14 @@ module.exports = {
             console.log("[UPGRADE] Displaying list of upgrades.")
 
             
-            var baseTier; //base tier
-            var baseSize; //base size
+            var baseTier;       //base tier
+            var baseSize;       //base size
+            var baseSleep;      //sleeping bag aka spawn point
+            var spacer;         //space between 
+            var baseWorkbench;  //workbench
+            var baseResearch;   //research table
+            var baseChest;      //chest
+            var baseFurnace;      //chest
 
             //tier
             if( (_Player.base.tier + 1) >= config.BASE_TYPES.length)
@@ -240,13 +250,93 @@ module.exports = {
                 }
             }
 
+            //SPACER
+            spacer = `**INTERIOR UPGRADES ( ${_Player.base.space_used} / ${_Player.base.size})**`;
+
+
+            //sleepingbag - spawn point
+            if( _Player.base.sleeping_bag == 1 )
+            {
+                baseSleep = `**3.** ~~Sleeping Bag - ${_Player.base.sleeping_bag}/1~~ • \`MAXED OUT\``;
+            }
+            else
+            {
+                baseSleep = `**3.** Sleeping Bag - 0/1 • \`Costs: ${config.BASE_UPGRADE_SLEEP_COST} cloth\``;
+            }
+            
+
+            //workbench
+            if( _Player.base.workbench == 3 )
+            {
+                baseWorkbench = `**4.** ~~Workbench LVL - ${_Player.base.workbench}/3~~ • \`MAXED OUT\``;
+            }
+            else if( _Player.base.workbench == 0 )
+            {
+                baseWorkbench = `**4.** Workbench LVL - ${_Player.base.workbench}/3 • \`Costs: ${config.BASE_UPGRADE_WORKBENCH_COST[_Player.base.workbench][0]} wood ${config.BASE_UPGRADE_WORKBENCH_COST[_Player.base.workbench][1]} metal_fragments ${config.BASE_UPGRADE_WORKBENCH_COST[_Player.base.workbench][2]} scrap\``;
+            }
+            else if( _Player.base.workbench == 1 )
+            {
+                baseWorkbench = `**4.** Workbench LVL - ${_Player.base.workbench}/3 • \`Costs: ${config.BASE_UPGRADE_WORKBENCH_COST[_Player.base.workbench][0]} metal_fragments ${config.BASE_UPGRADE_WORKBENCH_COST[_Player.base.workbench][1]} hqm ${config.BASE_UPGRADE_WORKBENCH_COST[_Player.base.workbench][2]} scrap\``;
+            }
+            else if( _Player.base.workbench == 2 )
+            {
+                baseWorkbench = `**4.** Workbench LVL - ${_Player.base.workbench}/3 • \`Costs: ${config.BASE_UPGRADE_WORKBENCH_COST[_Player.base.workbench][0]} metal_fragments ${config.BASE_UPGRADE_WORKBENCH_COST[_Player.base.workbench][1]} hqm ${config.BASE_UPGRADE_WORKBENCH_COST[_Player.base.workbench][2]} scrap\``;
+            }
+
+            //research table
+            if( _Player.base.research_table == 1 )
+            {
+                baseResearch = `**5.** ~~Research Table - ${_Player.base.research_table}/1~~ • \`MAXED OUT\``;
+            }
+            else
+            {
+                baseResearch = `**5.**Research Table (req. Workbench) - ${_Player.base.research_table}/1 • \`Costs: ${config.BASE_UPGRADE_RESEARCH_COST[0]} metal_fragments ${config.BASE_UPGRADE_RESEARCH_COST[0]} scrap\``;
+            }
+
+            //storage
+            if( _Player.base.storage == 3 )
+            {
+                baseStorage = `**6.** ~~Storage LVL - ${_Player.base.storage}/3~~ • \`MAXED OUT\``;
+            }
+            else if( _Player.base.storage == 0 )
+            {
+                baseStorage = `**6.** Storage LVL - ${_Player.base.storage}/3 • \`Costs: ${config.BASE_UPGRADE_STORAGE_COST[_Player.base.storage]} cloth\``;
+            }
+            else if( _Player.base.storage == 1 )
+            {
+                baseStorage = `**6.** Storage LVL - ${_Player.base.storage}/3 • \`Costs: ${config.BASE_UPGRADE_STORAGE_COST[_Player.base.storage]} wood\``;
+            }
+            else if( _Player.base.storage == 2 )
+            {
+                baseStorage = `**6.** Storage LVL - ${_Player.base.storage}/3 • \`Costs: ${config.BASE_UPGRADE_STORAGE_COST[_Player.base.storage]} metal_fragments\``;
+            }
+
+            //furnace
+            if( _Player.base.furnace == 1 )
+            {
+                baseFurnace = `**7.** ~~Furnace - ${_Player.base.furnace}/1~~ • \`MAXED OUT\``;
+            }
+            else
+            {
+                baseFurnace = `**7.**Furnace - ${_Player.base.furnace}/1 • \`Costs: ${config.BASE_UPGRADE_FURNACE_COST[0]} stone ${config.BASE_UPGRADE_FURNACE_COST[1]} wood ${config.BASE_UPGRADE_FURNACE_COST[2]} low_grade_fuel\``;
+            }
+
+
             var upgradeList = `
                 ${baseTier}
                 ${baseSize}
+
+                ${spacer}
+                ${baseSleep}
+                ${baseWorkbench}
+                ${baseResearch}
+                ${baseStorage}
+                ${baseFurnace}
             `;
 
             embedded.setDescription(`Upgrade your base by doing \`${process.env.BOT_PREFIX}upgrade <number>\`\nMust have the materials in your inventory.`)
-                    .addField('UPGRADES', upgradeList, true)
+                    .addField('EXTERIOR UPGRADES', upgradeList, true)
+                    .setFooter(`___\nIf you need more space for interior upgrades, upgrade your base size.`);
             return message.channel.send(embedded);
         }
     }

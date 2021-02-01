@@ -12,6 +12,17 @@ config.BASE_TYPES = ['twig','wood','stone','metal','armored'];
 config.BASE_UPGRADE_MATERIALS = ['wood','wood','stone','metal_fragments','hqm'];
 config.BASE_UPGRADE_MATERIALS_COST = [260,1300,1560,1040,131];
 
+config.BASE_UPGRADE_SLEEP_COST = 30;
+config.BASE_UPGRADE_STORAGE_COST = [10,100,200] // cloth, wood, metal_frag
+config.BASE_UPGRADE_RESEARCH_COST = [200,20]; // metal_frag , scrap
+config.BASE_UPGRADE_FURNACE_COST = [200,100,50]; // stone , wood, low grade fuel
+config.BASE_UPGRADE_WORKBENCH_COST = [
+    [500,100,50],       // wood , metal_framgments, scrap
+    [500,20,500],       // metal frag, hqm, scrap
+    [1000,100,1250],    // metal_fragments,hqm,scrap
+]; 
+
+
 //LOOTING
 config.LOOT_MAX_ITEMS = 4;
 config.LOOT_CHANCE_RATION = 10;
